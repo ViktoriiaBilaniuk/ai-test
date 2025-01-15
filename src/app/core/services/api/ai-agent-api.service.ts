@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { ApiBaseService } from './api-base.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AwsDOneOneBaseMetalInterface } from '../../models/aws-d-one-one-base-metal.interface';
+import { AiAgentPayload, AiAgentResponse } from '../../interfaces/ai-agent.interface';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AwsBaseMetalsApiService extends ApiBaseService {
+export class AiAgentApiService extends ApiBaseService {
 
   constructor(
     http: HttpClient,
@@ -16,7 +16,7 @@ export class AwsBaseMetalsApiService extends ApiBaseService {
     super(http);
   }
 
-  getAwsDOneOneBaseMetals(): Observable<AwsDOneOneBaseMetalInterface[]> {
-    return this.http.get<AwsDOneOneBaseMetalInterface[]>(`${this.apiUrl}/weldapi/aws-d1.1-base-metals`);
+  getAiAgentResult(payload: AiAgentPayload): Observable<AiAgentResponse> {
+    return this.http.post<AiAgentResponse>(`${this.apiUrl}/weldapi/ai-agent`, payload);
   }
 }

@@ -1,0 +1,24 @@
+.spinner {
+  width: 100%; // Adjust width as needed
+  height: 20px; // Adjust height as needed
+  background: repeating-linear-gradient(
+                  45deg,
+                  #ececec, // Stripe color
+                  #ececec 10px,
+                  #f8f8f8 10px,
+                  #f8f8f8 20px
+  );
+  background-size: 200% 100%; // Double the width for animation
+  animation: stripe-spin 20s linear infinite; // Increase duration to 3 seconds
+  border-radius: 5px; // Rounded corners for a polished look
+}
+
+// Keyframes for the spinning effect
+@keyframes stripe-spin {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0; // Move stripes left to right
+  }
+}
