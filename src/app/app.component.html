@@ -11,11 +11,18 @@
       } @else {
         @if (answer) {
           <p>{{ answer }}</p>
-        } @else {
-          <p class="hint">The answer will appear here</p>
         }
         @if (error) {
-          <p class="error">{{ error }}</p>
+          <p class="error">
+            {{
+              error === "failed to generate AI response"
+                ? "Sorry, I didn't get your question. Please, provide more details"
+                : ""
+            }}
+          </p>
+        }
+        @if (!answer && !error) {
+          <p class="hint">The answer will appear here</p>
         }
       }
     </div>
